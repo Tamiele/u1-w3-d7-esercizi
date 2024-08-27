@@ -36,7 +36,7 @@
   <body>
     <div>
       <h1>Questo è il titolo della pagina</h1>
-      <h2>Questo è il sottotitolo della pagina</h2>
+      <h2 class>Questo è il sottotitolo della pagina</h2>
     </div>
 
     <div>
@@ -99,13 +99,13 @@
         h1.classList.add(classTitle);
       };
 
-      addClassToTitle("classTitle");
+      addClassToTitle("myHeading");
       /* ESERCIZIO 3
            Scrivi una funzione che cambi il testo dei p figli di un div
           */
 
       const changePcontent = function (textParagrafo) {
-        const paragrafo = document.querySelectorAll("div > p");
+        const paragrafo = document.querySelectorAll("div > p"); //vado a trovare le p all'interno dei div
         paragrafo.forEach((p) => {
           p.innerText = textParagrafo;
         });
@@ -118,7 +118,7 @@
 
       const changeUrls = function (newLink) {
         const urls = document.querySelectorAll("a:not(footer a )"); //vado a selezionare le ancor andando ad escludere l'ancor nel footer
-        urls.forEach((link) => (link.href = newLink)); //ciclo
+        urls.forEach((link) => (link.href = newLink));
       };
       changeUrls("https://www.google.com");
 
@@ -127,10 +127,10 @@
         */
 
       const addToTheSecond = function (addLi) {
-        const list2 = document.getElementById("secondList");
-        const newLi = document.createElement("li");
+        const list2 = document.getElementById("secondList"); //raggiungo la lista
+        const newLi = document.createElement("li"); //creo nuovo elemento li con document.createElement
         newLi.innerText = addLi;
-        list2.appendChild(newLi);
+        list2.appendChild(newLi); //aggancio li a ul
       };
       addToTheSecond("nuovo elemento");
 
@@ -153,7 +153,7 @@
 
       const hideFirstUl = function () {
         const list1 = document.getElementById("firstList");
-        list1.remove();
+        list1.remove(); //remove rimuove la lista.
       };
       hideFirstUl();
 
@@ -162,9 +162,9 @@
           */
 
       const paintItGreen = function () {
-        const list = document.querySelectorAll("ul");
+        const list = document.querySelectorAll("ul"); //raggiungo la lista
         list.forEach((ul) => {
-          ul.style.backgroundColor = "green";
+          ul.style.backgroundColor = "green"; //assegno il background alla lista
         });
       };
       paintItGreen();
@@ -173,13 +173,24 @@
            Scrivi una funzione che rimuova l'ultima lettera dall'h1 ogni volta che l'utente lo clicca
           */
 
-      const makeItClickable = function () {};
+      const makeItClickable = function () {
+        const title = document.querySelector("h1");
+
+        title.onclick = function () {};
+      };
 
       /* ESERCIZIO 10
            Crea una funzione che, al click sul footer, riveli l'URL del link interno come contenuto di un alert()
           */
 
-      const revealFooterLink = function () {};
+      const revealFooterLink = function () {
+        const footerLink = document.querySelector("footer a");
+        footerLink.onclick = function () {
+          const URL = footerLink.getAttribute("href"); //getAttribute restituisce l'url all'inerno dell'ancor
+          alert(URL); //crea un alert dove si visualizza l'URL
+        };
+      };
+      revealFooterLink();
 
       /* ESERCIZIO 11
            Crea una funzione che crei una tabella nell'elemento con id "tableArea".
@@ -204,7 +215,9 @@
           Crea una funzione che cambi il colore del h2 con id "changeMyColor" con un colore random ad ogni click ricevuto
         */
 
-      const changeColorWithRandom = function () {};
+      const changeColorWithRandom = function () {
+        const randomColor = document.getElementById("changeMyColor");
+      };
     </script>
   </body>
 </html>
